@@ -1,0 +1,62 @@
+/* ════════════════════════════════════════════════════════════
+   src/app/globals.css
+   全局样式 — Tailwind 指令 + 自定义 CSS 变量
+════════════════════════════════════════════════════════════ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: var(--font-sora), sans-serif;
+    --font-body:    var(--font-inter), sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* 确保 Sora 字体用于 display 类名 */
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* 焦点可见性（无障碍）*/
+  :focus-visible {
+    outline: 2px solid #C0272D;
+    outline-offset: 2px;
+  }
+
+  /* 隐藏 input[type=number] 的上下箭头 */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+}
+
+@layer utilities {
+  /* line-clamp 兼容工具类 */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* 无滚动条（用于 admin sidebar 等） */
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+}
