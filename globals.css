@@ -3,21 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    font-family: "Inter", system-ui, sans-serif;
-  }
-  body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  .font-display {
-    font-family: "Sora", "Inter", system-ui, sans-serif;
-  }
-  :focus-visible {
-    outline: 2px solid #c0272d;
-    outline-offset: 2px;
-  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-inter), sans-serif; -webkit-font-smoothing: antialiased; }
+  .font-display { font-family: var(--font-sora), sans-serif; }
+  :focus-visible { outline: 2px solid #C0272D; outline-offset: 2px; }
 }
 
 @layer utilities {
@@ -33,11 +22,6 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 }

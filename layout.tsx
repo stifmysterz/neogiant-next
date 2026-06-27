@@ -1,5 +1,19 @@
 import type { Metadata } from "next";
+import { Inter, Sora } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-sora",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.neogiant.com.my"),
@@ -38,21 +52,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-MY">
-      <head>
-        {/* Fonts loaded via CSS — not next/font to avoid build-time network fetch */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700;800&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="antialiased bg-white text-gray-700">
+    <html lang="en-MY" className={`${inter.variable} ${sora.variable}`}>
+      <body className="font-body antialiased bg-white text-gray-700">
         {children}
       </body>
     </html>
