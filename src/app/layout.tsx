@@ -1,28 +1,11 @@
-// ════════════════════════════════════════════════════════════
-//  src/app/layout.tsx
-//  全局 Root Layout — Next.js 14 App Router
-// ════════════════════════════════════════════════════════════
 import type { Metadata } from "next";
-import { Inter, Sora } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const sora = Sora({
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  variable: "--font-sora",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.neogiant.com.my"),
   title: {
-    default: "Neo Giant (M) Sdn Bhd | Manpower Supply Penang | Recruitment Malaysia",
+    default:
+      "Neo Giant (M) Sdn Bhd | Manpower Supply Penang | Recruitment Malaysia",
     template: "%s | Neo Giant (M) Sdn Bhd",
   },
   description:
@@ -33,28 +16,20 @@ export const metadata: Metadata = {
     "human resources Penang",
     "local worker recruitment",
     "foreign worker recruitment Malaysia",
-    "hostel management Penang",
-    "CLQ management Malaysia",
-    "manpower outsourcing Penang",
+    "hostel management",
+    "CLQ management",
+    "manpower outsourcing",
     "jawatan kosong Penang",
-    "staffing agency Malaysia",
   ],
-  authors: [{ name: "Neo Giant (M) Sdn Bhd", url: "https://www.neogiant.com.my" }],
-  creator: "Neo Giant (M) Sdn Bhd",
   openGraph: {
     type: "website",
     locale: "en_MY",
     url: "https://www.neogiant.com.my",
     siteName: "Neo Giant (M) Sdn Bhd",
-    title: "Neo Giant (M) Sdn Bhd | Manpower Supply Penang",
-    description:
-      "Trusted manpower supply, foreign worker recruitment, and HR outsourcing in Penang and Malaysia.",
+    images: [{ url: "/og-image.svg", width: 1200, height: 630 }],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
-  },
+  icons: { icon: "/favicon.svg" },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -63,8 +38,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-MY" className={`${inter.variable} ${sora.variable}`}>
-      <body className="font-body antialiased text-gray-700 bg-white">
+    <html lang="en-MY">
+      <head>
+        {/* Fonts loaded via CSS — not next/font to avoid build-time network fetch */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased bg-white text-gray-700">
         {children}
       </body>
     </html>
