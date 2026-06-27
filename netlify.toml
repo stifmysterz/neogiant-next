@@ -3,30 +3,32 @@
   publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
+  NPM_VERSION  = "10"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
 [functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
+  directory        = "netlify/functions"
+  node_bundler     = "esbuild"
+  external_node_modules = ["bcryptjs", "jsonwebtoken"]
 
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "DENY"
+    X-Frame-Options        = "DENY"
     X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
 
 [[headers]]
   for = "/admin/*"
   [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
+    X-Robots-Tag  = "noindex, nofollow"
     Cache-Control = "no-store, no-cache"
 
 [[redirects]]
-  from = "https://neogiant.com.my/*"
-  to = "https://www.neogiant.com.my/:splat"
+  from   = "https://neogiant.com.my/*"
+  to     = "https://www.neogiant.com.my/:splat"
   status = 301
-  force = true
+  force  = true
